@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -13,7 +14,18 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: "./index.js",
+    filename: '[name].[hash].js',
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        },
+      },
+    },
   },
   module: {
     rules: [{
@@ -22,7 +34,7 @@ module.exports = {
       },
       {
         test: /\.ts(x?)$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
       },
     ],
@@ -34,5 +46,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
+    new BundleAnalyzerPlugin(),
   ],
 };
