@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -14,27 +15,28 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: '[name].[hash].js',
+    filename: "[name].[hash].js",
   },
   optimization: {
     splitChunks: {
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
+          name: "vendors",
+          chunks: "all",
         },
       },
     },
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
       {
         test: /\.ts(x?)$/,
-        use: "ts-loader",
+        use: ["babel-loader", "ts-loader"],
         exclude: /node_modules/,
       },
     ],

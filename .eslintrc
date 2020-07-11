@@ -14,10 +14,16 @@
     }
   },
   "rules": {
+    // "quotes": [
+    //   "error",
+    //   "single",
+    //   { "avoidEscape": true, "allowTemplateLiterals": false  }
+    // ],
     "prettier/prettier": [
       "error",
       {
         "endOfLine": "auto"
+        // "singleQuote": true
       }
     ],
     "no-restricted-syntax": [
