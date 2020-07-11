@@ -29,11 +29,12 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "#dfecfb",
     },
     messageInputWrapper: {
-      position: "fixed",
+      position: "sticky",
       left: "auto",
       right: 0,
       bottom: 0,
-      width: `calc(100% - 280px)`,
+      width: `100%`,
+      marginTop: 10,
     },
     messageInput: {
       paddingLeft: 30,
