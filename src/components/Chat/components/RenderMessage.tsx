@@ -34,7 +34,7 @@ interface Props {
   index: number;
 }
 
-export default function RenderMessage(props: Props) {
+export function RenderMessage(props: Props) {
   const { msg, index } = props;
   const classes = useStyles();
   const clientMessage = msg.sender === "me";
