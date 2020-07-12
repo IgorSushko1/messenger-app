@@ -26,13 +26,6 @@
         // "singleQuote": true
       }
     ],
-    "no-restricted-syntax": [
-      "error",
-      {
-        "selector": "ExportDefaultDeclaration",
-        "message": "Restricted default export, prefer named exports!"
-      }
-    ],
     "no-console": [
       "error",
       { "allow": [

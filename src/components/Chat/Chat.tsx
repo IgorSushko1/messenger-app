@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { chat } from "@/mock-file.json";
-import { RenderMessage } from "./components/RenderMessage";
+import RenderMessage from "./components/RenderMessage";
 import { MessageInput } from "./components/MessageInput";
 
 const useStyles = makeStyles((theme: Theme) =>
