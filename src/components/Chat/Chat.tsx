@@ -3,6 +3,7 @@ import { Avatar, Typography, Paper, Input } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { chat } from "@/mock-file.json";
 import { AttachFile as AttachFileIcon } from "@material-ui/icons";
+import RenderMessage from "./components/RenderMessage";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -58,38 +59,7 @@ export function Chat() {
     <main className={classes.content}>
       <div className={classes.toolbar} />
       {chat.map((msg, index) => {
-        // этот map надо перенести в отдельный компонент RenderMessage
-        const clientMessage = msg.sender === "me";
-        const userAvatar = <Avatar>{msg.sender[0]}</Avatar>;
-        const message = (
-          <>
-            {!clientMessage && (
-              <Typography style={{ fontWeight: 700 }}>{msg.sender}</Typography>
-            )}
-            <Typography variant="body1">{msg.text}</Typography>
-          </>
-        );
-
-        return (
-          <div
-            key={index}
-            className={[
-              classes.wrapMessage,
-              clientMessage ? classes.wrapMyMessage : "",
-            ].join(" ")}
-          >
-            {!clientMessage && userAvatar}
-            <Paper
-              className={[
-                classes.message,
-                clientMessage ? classes.clientMessage : "",
-              ].join(" ")}
-            >
-              {message}
-            </Paper>
-            {clientMessage && userAvatar}
-          </div>
-        );
+        return RenderMessage({msg, index});
       })}
 
       <div className={classes.messageInputWrapper}>
